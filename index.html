@@ -6,21 +6,139 @@
 <link href="css/reset.css" type="text/css" rel="stylesheet"/>
 <link href="css/index.css" type="text/css" rel="stylesheet"/>
 <script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/scrollAnimator.js"></script>
 <script src="js/index.js"></script>
+<script>
+
+	var mouseY = 0;
+	$(function(){
+		$("#navback").click(function(e){
+			//alert($("#tracer").html());
+			var parentOffset = $(this).parent().offset(); 
+			//or $(this).offset(); if you really just want the current element's offset
+			var relX = e.pageX - parentOffset.left;
+			var relY = e.pageY - parentOffset.top;
+			mouseY = relY;
+			$("#drag222").stop().animate({
+				top:relY
+			},1000);
+			$("#nav222").stop().animate({
+				top:relY
+			},1000);
+
+			test(Math.floor((relY/900) *6000));
+			//var clickcheck = 0;
+			//topp = getBarTop();
+			//alert("HI");
+			//alert(getAnimateTop());
+			//alert( Math.floor((relY/900) *6000) );
+			//scrollTo( 1 );
+
+		});
+
+		$("#drag222").draggable({
+		containment: "#navback",
+			start: function(e) { 
+				//count1++; 
+				//$("#info1").html("Start " + count1);	
+			}, 
+			drag: function(e) { 
+				$("#drag222").css("right","0");
+				var parentOffset = $(this).parent().offset(); 
+				var relX = e.pageX - parentOffset.left;
+				var relY = e.pageY - parentOffset.top;
+				mouseY = relY;
+				$("#mouse1").html(relY);
+				pop = Math.floor((relY/900) *6000);
+				test( pop );
+					if((Math.floor((pop/6000)*100))>98){
+						$("#drag222").css("top","98%");
+						$("#nav222").css("top","98%");
+					}else{
+						//$("#drag222").css("top","50%");
+						$("#drag222").css("top",Math.floor((pop/6000)*100)+"%");
+						$("#nav222").css("top",Math.floor((pop/6000)*100)+"%");
+					}
+				//count2++;	 
+				//$("#info2").html("Drag " + count2);
+			}, 
+			stop: function() { 
+				//count3++;	 
+				//$("#info3").html("Stop " + count3); 
+			}
+		});
+		
+		
+		$("#main").mousewheel(function(){
+			hipTop = Math.floor($("#tracer").html());
+			
+			hipTop2=Math.floor((hipTop/6000)*900);
+			$("#mouse1").html(hipTop+":"+hipTop2);
+			//if(Math.floor((hipTop/900)*100)>98){
+			//	$("#drag222").css("top","98%");
+			//	$("#nav222").css("top","98%");
+			//}else{
+				$("#drag222").css("top",hipTop2);
+				$("#nav222").css("top",hipTop2);
+			//}
+			
+		});
+		
+	});
+	function test(pp){
+		testAnimate(pp);
+	}
+	function getAnimateTop(){
+		//return scrollAnimator.getBarTop();
+	}
+</script>
 <style>
-	
+
 </style>
 </head>
-
 <body>
+<div id="debug">
+	<a id="btnStart" style="color:#FFF">start</a>
+	<a id="btnStop" style="color:#FFF">stop</a>
+	<a id="tracer" style="color:#FFF"></a> <!--一定要 by Ryah-->
+	<a id="mouse1" style="color:#FFF"></a>
+	<div id="compare">
+		<!--<a><img src="images/final/0.jpg"/></a>
+		<a><img src="images/final/1.jpg"/></a>
+		<a><img src="images/final/1_a.jpg"/></a>
+		<a><img src="images/final/2.jpg"/></a>
+		<a><img src="images/final/3.jpg"/></a>
+		<a><img src="images/final/4.jpg"/></a>
+		<a><img src="images/final/5.jpg"/></a>
+		<a><img src="images/final/6-0.jpg"/></a>
+		<a><img src="images/final/6-1.jpg"/></a>
+		<a><img src="images/final/7.jpg"/></a>
+		<a><img src="images/final/8.jpg"/></a>
+		<a><img src="images/final/9.jpg"/></a>
+			-->
+	</div> 
+</div>
 <div id="allMask">
-	<div id="logo"><img src="images/startLogo_1.png"/></div>
+	<div id="logo"><img src="images/scene_logo.png"/></div>
 	<img id="caseGameScore" src="images/8_04.png"/>
 	<img id="caseGameLife" src="images/8_05.png"/>
 	<div id="main">
-		
+		<div id="ori">
+			<img src="images/final/0.jpg"/>
+			<img src="images/final/1.jpg"/>
+			<img src="images/final/1_a.jpg"/>
+			<img src="images/final/2.jpg"/>
+			<img src="images/final/3.jpg"/>
+			<img src="images/final/4.jpg"/>
+			<img src="images/final/5.jpg"/>
+			<img src="images/final/6-0.jpg"/>
+			<img src="images/final/6-1.jpg"/>
+			<img src="images/final/7.jpg"/>
+			<img src="images/final/8.jpg"/>
+			<img src="images/final/9.jpg"/>		
+		</div>	
 		<div id="sec01">
 			<div class="descBlk">
 				<p class="name">Qrono case</p>
@@ -28,34 +146,40 @@
 			</div>
 		</div>
 		<div id="sec02">
-			<p class="desc">conveniently store everyday items</p>
+			<p class="desc"><img src="images/1_text01.png"/></p>
+			<p class="desc02"><img src="images/1_text03.png"/></p>
 			<div class="mask">				
 				<img src="images/1_01.jpg"/>
 			</div>
 		</div>
 		<div id="sec03">
 			<div class="descBlk">
-				<p>Featuring a clever elastic strap system that is designed to assist when you are multitasking</p>
+				<img id="shadow" src="images/1_img_shadow.png"/>
+				<p><img src="images/1_text02.png"/></p>
 			</div>
 		</div>
 		<div id="sec04">
 			<img id="buildingBack" src="images/building_back.jpg"/>
 			<img id="buildingFront" src="images/building_front.png"/>
 			<img id="moveCase" src="images/move_case.png"/>
-			<p class="desc">drop-free texting　　while on the go</p>
+			<img id="moveCaseHand" src="images/2_hand.png"/>
+			<div id="moveCaseBlock"></div>
+			<p class="desc"><img src="images/2_text.png"/></p>
 		</div>
-		<div id="sec05">
-			<img id="mBack" src="images/3_02.png"/>
+		<div id="sec05">			
 			<img id="mFront" src="images/3_01.png"/>
+			<img id="mBack" src="images/3_02.png"/>
 			<img id="cardCase" src="images/cardCase.png"/>
-			<p class="desc">secure personal cards</p>
+			<img id="cardCaseHand" src="images/3_hand.png"/>
+			<div id="cardCaseBlock"></div>
+			<p class="desc"><img src="images/3_text.png"/></p>
 		</div>
 		<div id="sec06">
 			<img id="caseStyle1" src="images/4_01.jpg"/>
 			<img id="caseStyle2" src="images/4_02.jpg"/>
 			<img id="caseStyle3" src="images/4_03.jpg"/>
 			<div class="descBlk">
-				<p class="desc">One design - three choice of style</p>
+				<p class="desc"><img src="images/4_text.png"/></p>
 			</div>
 		</div>
 		<div id="sec07">
@@ -64,19 +188,27 @@
 			<img id="colorCase4" src="images/5_04.png"/>
 			<img id="colorCase1" src="images/5_01.png"/>
 			<img id="colorCase2" src="images/5_02.png"/>		
-			<p class="desc">color accent interchangeable to fit your style</p>
+			<p class="desc"><img src="images/5_text.png"/></p>
 		</div>
 		<div id="sec08">
 			<img id="caseFrameBg" src="images/6_01.jpg"/>
-			<div id="caseFrameBlack"></div>
-			<img id="caseFrame" src="images/6_02.png"/>			
-			<p class="desc">precisely engineered and pieced together like a fine watch</p>
+			<div id="caseFrameBlack"></div>			
+			<img id="caseFrameBack" class="caseframe" src="images/6_8.png"/>		
+			<img class="caseFrame" src="images/6_7.png"/>
+			<img id="caseFrameLockLeft" src="images/6_6.png"/>
+			<img id="caseFrameLockRight" src="images/6_5.png"/>
+			<img id="caseFrameRight" src="images/6_4.png"/>
+			<img id="caseFrameLeft" src="images/6_3.png"/>
+			<img class="caseFrame" src="images/6_2.png"/>
+			<p class="desc"><img src="images/6_text.png"/></p>
 		</div>
 		<div id="sec09">
 			<img id="caseBubble01" src="images/7_02.png"/>
 			<img id="caseBubble02" src="images/7_03.png"/>
 			<img id="caseConcert" src="images/7_04.png"/>
-			<p class="desc">clinches to hand in any position</p>
+			<img id="caseConcertHand" src="images/7_hand.png"/>
+			<div id="caseConcertBlock"></div>
+			<p class="desc"><img src="images/7_text.png"/></p>
 		</div>
 		<div id="sec10">
 			<div id="caseGameBlack"></div>
@@ -89,7 +221,7 @@
 			<img id="caseGameBoom" src="images/8_09.png"/>
 			<img id="caseGameEnermy01" src="images/8_10.png"/>
 			<img id="caseGameEnermy02" src="images/8_11.png"/>
-			<p class="desc">game pad inspired sidegrips</p>
+			<p class="desc"><img src="images/8_text.png"/></p>
 		</div>
 		<div id="sec11">
 			<div id="caseLimitBlack"></div>
@@ -99,9 +231,8 @@
 			<img id="caseLimit04" src="images/9_04.jpg"/>
 			<img id="caseLimitLabel" src="images/9_05.png"/>
 			<div class="descBlk">
-			<p>Over 8 million iPhone 5 sold world-wide, less than 0.025% of all users will be able to upgrade to the Qrono multi-functional armor. </p>
-			<p>Production is limited and available in 4 premium colors.</p>
-			<p class="highlight">Reserve yours now.</p>
+			<p class="desc"><img src="images/9_text01.png"/></p>
+			<p class="highlight"><img src="images/9_text02.png"/></p>
 			</div>
 		</div>
 	</div>	
@@ -116,6 +247,13 @@
 			<li><a href="#sec07">7</a></li>
 			<li><a href="#sec08">8</a></li>
 		</ul>
+	</div>
+	
+	<div id="navback">
+	<div id="nav222"></div>
+	
+	
+	<div id="drag222"></div>
 	</div>
 </div>
 </body>

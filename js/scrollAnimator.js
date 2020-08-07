@@ -1,5 +1,6 @@
 var ScrollAnimator = function() {
 
+	var barTop =0;
 	var settings = {},
 		page,
 		started = false,
@@ -22,8 +23,8 @@ var ScrollAnimator = function() {
 	function animationLoop() {
 		requestAnimFrame(animationLoop);
 		
-		if (paused)
-			return;
+		/*if (paused)
+			return;*/
 		
 		if (Math.ceil(scrollTopTweened) !== Math.floor(scrollTop)) {
 			//Smooth out scrolling action
@@ -387,6 +388,32 @@ var ScrollAnimator = function() {
 			} else {
 				return function( callback ){
 					window.setTimeout( callback, settings.tickSpeed);
+					//$("#tracer").html(Math.floor((scrollTop/6000)*100) + "%");
+					//$("#tracer").html(scrollTop + ":" + Math.floor((scrollTop/6000)*100) + "%");
+					$("#tracer").html( Math.floor(scrollTop) );
+					/*
+					if((Math.floor((scrollTop/6000)*100))>98){
+						$("#drag222").css("top","98%");
+						$("#nav222").css("top","98%");
+					}else{
+						//$("#drag222").css("top","50%");
+						$("#drag222").css("top",Math.floor((scrollTop/6000)*100)+"%");
+						$("#nav222").css("top",Math.floor((scrollTop/6000)*100)+"%");
+					}
+					
+					*/
+					if(scrollTop>=6000){
+							if(brightTimer===undefined||brightTimer===null) brightTimer=setInterval(doBright,600);
+					}					
+					else{
+						clearInterval(brightTimer);
+						brightTimer=null;
+					}
+					if(scrollTop<=1){pauseScroll();autoScrollStart();}
+					if(scrollTop>=450){autoScrollStop(); resumeScroll()}
+					
+					if(scrollTop<=4000){$("#caseGameScore,#caseGameLife").css("opacity",0)}
+					if(scrollTop<=2600){$("#buildingNight").css("top",900);$("#colorCase1,#colorCase2,#sec07 .desc").css("opacity",0)}
 				}
 			};
 		})();
@@ -431,18 +458,20 @@ var ScrollAnimator = function() {
 	};
 
 	function autoScrollStart() {
-		if (autoScrollInterval)
-			return;
-		autoScrollInterval = setInterval( aScroll, 100  );
+		if (autoScrollInterval)return;
+			
+		autoScrollInterval = setInterval( aScroll, 50  );
 	}
 
 	function autoScrollStop() {
 		clearInterval( autoScrollInterval );
+		autoScrollInterval=null;
 	}
 
 	function aScroll() {
 		scrollTop+= 5;
 		if (scrollTop > settings.maxScroll) scrollTop = scrollTopTweened = 0;
+		
 	}
 
 	function stopScroll() {
@@ -485,7 +514,7 @@ var ScrollAnimator = function() {
 	function isDebug() {
 		return settings.debug;
 	};
-
+	
 	return {
 		init: init,
 		start: start,
@@ -497,6 +526,7 @@ var ScrollAnimator = function() {
 		autoScrollStart: autoScrollStart,
 		autoScrollStop: autoScrollStop,
 		stopScroll: stopScroll,
+		pauseScroll: pauseScroll,
 		scrollTo: scrollTo,
 		isDebug: isDebug,
 		toggleDebug: toggleDebug,

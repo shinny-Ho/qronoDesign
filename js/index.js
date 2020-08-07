@@ -11,29 +11,29 @@ var scrollAnimate,
 	var pulseReminders = 3;
 	var pulseScrollTeaserRunning = false;
 	var sectionIndex = [
-		{id:"#sec01",name:"sec01",tag:"#sec01",position:1048,correct:false},
-		{id:"#sec02",name:"sec02",tag:"#sec02",position:1500,correct:false},
-		{id:"#sec03",name:"sec03",tag:"#sec03",position:1650,correct:false},
-		{id:"#sec04",name:"sec04",tag:"#sec04",position:1850,correct:false},
-		{id:"#sec05",name:"sec05",tag:"#sec05",position:2100,correct:false},
-		{id:"#sec06",name:"sec06",tag:"#sec06",position:2350,correct:false},
-		{id:"#sec07",name:"sec07",tag:"#sec07",position:2850,correct:false},
-		{id:"#sec08",name:"sec08",tag:"#sec08",position:3150,correct:false},
+		{id:"#sec01",name:"sec01",tag:"#sec01",position:0,correct:false},
+		{id:"#sec02",name:"sec02",tag:"#sec02",position:800,correct:false},
+		{id:"#sec03",name:"sec03",tag:"#sec03",position:1700,correct:false},
+		{id:"#sec04",name:"sec04",tag:"#sec04",position:2250,correct:false},
+		{id:"#sec05",name:"sec05",tag:"#sec05",position:2780,correct:false},
+		{id:"#sec06",name:"sec06",tag:"#sec06",position:3149,correct:false},
+		{id:"#sec07",name:"sec07",tag:"#sec07",position:3549,correct:false},
+		{id:"#sec08",name:"sec08",tag:"#sec08",position:4300,correct:false},
 	];
 	var $win;
+	var brightTimer;
 	var animation = [
 	         		{
 	         			selector: '#sec01',
 	         			startAt: 0,
-	         			endAt: 435,
+	         			endAt: 350,
 	         			onEndAnimate:function( anim ) {
 	         			},
 						onProgress:function( keyframeProgress ) {
 							var imgSrc = Math.ceil(78*keyframeProgress);
 							//console.log(imgSrc);
 							$("#sec01 img").hide();
-							$("#caseStep"+imgSrc).show();
-							
+							$("#caseStep"+imgSrc).show();						
 							//$("#sec01 img").attr("src","images/case/case"+imgSrc+".jpg");
 								
 						},
@@ -55,7 +55,7 @@ var scrollAnimate,
 					{
 	         			selector: '#sec01 .descBlk',
 	         			startAt: 350,
-	         			endAt: 500,
+	         			endAt: 410,
 	         			onEndAnimate:function( anim ) {
 	         			},
 	         			keyframes: [
@@ -71,7 +71,7 @@ var scrollAnimate,
 	         					position: 1,
 	         					properties: {
 	         						opacity: 1,
-									"margin-left":-300
+									"margin-left":-364
 	         					}
 	         				}
 	         			]
@@ -100,24 +100,44 @@ var scrollAnimate,
 	         		},					
 					{
 	         			selector: '#sec01 .descBlk',
-	         			startAt: 550,
-	         			endAt: 650,
+	         			startAt: 650,
+	         			endAt: 700,
 	         			onEndAnimate:function( anim ) {
 	         			},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-									opacity:1,
-	         						"margin-top":-60
+	         						"margin-top":-133
 	         					}
 	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-									opacity:.3,
-	         						"margin-top":-200
+	         						"margin-top":-373
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#sec01 .descBlk',
+	         			startAt: 650,
+	         			endAt: 730,
+	         			onEndAnimate:function( anim ) {
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
 	         					}
 	         				}
 	         			]
@@ -151,8 +171,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec01',
-	         			startAt: 700,
-	         			endAt: 750,
+	         			startAt: 710,
+	         			endAt: 760,
 	         			onEndAnimate:function( anim ) {
 	         			},
 	         			keyframes: [
@@ -194,6 +214,29 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#sec02 .desc',
+	         			startAt: 750,
+	         			endAt: 800,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#logo',
 	         			startAt: 680,
 	         			endAt: 750,
@@ -211,16 +254,16 @@ var scrollAnimate,
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						opacity:1,
-									top:10
+	         						opacity:.8,
+									top:28
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#sec03',
-	         			startAt: 750,
-	         			endAt: 900,
+	         			startAt: 850,
+	         			endAt: 950,
 	         			onEndAnimate:function( anim ) {
 							
 	         			},
@@ -237,15 +280,61 @@ var scrollAnimate,
 	         					position: 1,
 	         					properties: {
 									width:1600,
-	         						left:345
+	         						left:388
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#shadow',
+	         			startAt: 850,
+	         			endAt: 950,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec02 .desc',
+	         			startAt: 850,
+	         			endAt: 950,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#sec02 img',
-	         			startAt: 890,
-	         			endAt: 900,
+	         			startAt: 950,
+	         			endAt: 1050,
 	         			onEndAnimate:function( anim ) {
 							
 	         			},
@@ -267,8 +356,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec03 .descBlk p',
-	         			startAt: 780,
-	         			endAt: 850,
+	         			startAt: 950,
+	         			endAt: 1050,
 	         			onEndAnimate:function( anim ) {
 	         			},
 	         			keyframes: [
@@ -289,8 +378,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec03',
-	         			startAt: 900,
-	         			endAt: 1050,
+	         			startAt: 1050,
+	         			endAt: 1200,
 						onStarTAnimate:function( anim ) {
 							
 	         			},
@@ -301,7 +390,7 @@ var scrollAnimate,
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						left: 345
+	         						left: 388
 	         					}
 	         					
 	         				},
@@ -314,77 +403,9 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
-	         			selector: '#sec02 .desc',
-	         			startAt: 950,
-	         			endAt: 1000,
-	         			onEndAnimate:function( anim ) {
-							
-	         			},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						opacity:0
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec03 .descBlk p',
-	         			startAt: 900,
-	         			endAt: 1050,
-	         			onEndAnimate:function( anim ) {
-							
-	         			},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						opacity:1
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec02',
+	         			selector: '#shadow',
 	         			startAt: 1050,
-	         			endAt: 1150,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_1.png");},
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						top:0
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						top:-450
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec02 .desc',
-	         			startAt: 1050,
-	         			endAt: 1150,
+	         			endAt: 1200,
 	         			onEndAnimate:function( anim ) {
 							
 	         			},
@@ -392,7 +413,6 @@ var scrollAnimate,
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						"margin-top":0,
 									opacity:1
 	         					}
 	         					
@@ -400,16 +420,85 @@ var scrollAnimate,
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						"margin-top":100,
 									opacity:0
 	         					}
 	         				}
 	         			]
 	         		},
 					{
-	         			selector: '#sec04',
+	         			selector: '#sec02 .desc02',
 	         			startAt: 1050,
-	         			endAt: 1150,
+	         			endAt: 1200,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		}
+					,
+					{
+	         			selector: '#sec03 .descBlk p',
+	         			startAt: 1050,
+	         			endAt: 1180,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec03 .descBlk',
+	         			startAt: 1050,
+	         			endAt: 1100,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:150
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec04',
+	         			startAt: 1250,
+	         			endAt: 1400,
 	         			onEndAnimate:function( anim ) {
 							
 	         			},
@@ -431,9 +520,54 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#sec02',
+	         			startAt: 1270,
+	         			endAt: 1400,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_1.png");*/},
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:-450
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec02 .desc02',
+	         			startAt: 1320,
+	         			endAt: 1380,
+	         			onEndAnimate:function( anim ) {
+							
+	         			},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#moveCase',
-	         			startAt: 1100,
-	         			endAt: 1150,
+	         			startAt: 1290,
+	         			endAt: 1400,
 	         			onEndAnimate:function( anim ) {
 							
 	         			},
@@ -455,9 +589,9 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#buildingFront',
-	         			startAt: 1150,
-	         			endAt: 1300,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_2.png");},
+	         			startAt: 1400,
+	         			endAt: 1800,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_2.png");*/},
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -481,8 +615,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#buildingBack',
-	         			startAt: 1150,
-	         			endAt: 1350,
+	         			startAt: 1410,
+	         			endAt: 1800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -505,160 +639,8 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
-	         			selector: '#sec04 .desc',
-	         			startAt: 1150,
-	         			endAt: 1300,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						opacity:0
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec04',
-	         			startAt: 1300,
-	         			endAt: 1500,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						top	:0
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						top:-700
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec04 .desc',
-	         			startAt: 1300,
-	         			endAt: 1500,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						opacity:1
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec05',
-	         			startAt: 1300,
-	         			endAt: 1400,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						top:900
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						top:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#mFront',
-	         			startAt: 1400,
-	         			endAt: 1500,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_3.png");},
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						left:100
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						left:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#mBack',
-	         			startAt: 1400,
-	         			endAt: 1500,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						left:550
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						left:520
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#cardCase',
-	         			startAt: 1400,
-	         			endAt: 1500,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						opacity:0,
-									"margin-left":200,
-									"margin-top":250
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						opacity:1,
-									"margin-left":100,
-									"margin-top":20
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec05 .desc',
-	         			startAt: 1400,
+	         			selector: '#moveCaseHand',
+	         			startAt: 1480,
 	         			endAt: 1550,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
@@ -678,9 +660,368 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#moveCaseBlock',
+	         			startAt: 1480,
+	         			endAt: 1550,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0.7
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec04 .desc',
+	         			startAt: 1600,
+	         			endAt: 1680,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec04 .desc',
+	         			startAt: 1820,
+	         			endAt: 2150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top:250
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:-650
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#moveCase,#moveCaseHand',
+	         			startAt: 1820,
+	         			endAt: 2150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top	:0,
+									opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 0.5,
+	         					properties: {
+	         						top:-450,
+									opacity:0
+	         					}
+	         				}
+							,
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:-900,
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#moveCaseBlock',
+	         			startAt: 1820,
+	         			endAt: 2150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:0.7
+	         					}
+	         					
+	         				},
+							{ 
+	         					position: 0.5,
+	         					properties: {
+									opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec04 .desc',
+	         			startAt: 1820,
+	         			endAt: 1870,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec04',
+	         			startAt: 1850,
+	         			endAt: 1950,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec05',
+	         			startAt: 1800,
+	         			endAt: 2000,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:1600
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#mFront',
+	         			startAt: 1800,
+	         			endAt: 1900,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_3.png");*/},
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:700
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#mBack',
+	         			startAt: 1800,
+	         			endAt: 1900,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:250
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:600
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#mFront',
+	         			startAt: 1950,
+	         			endAt: 2050,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_3.png");*/},
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:700
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#mBack',
+	         			startAt: 1950,
+	         			endAt: 2050,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:600
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#cardCase',
+	         			startAt: 2000,
+	         			endAt: 2100,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0,
+									"margin-left":200,
+									"margin-top":250
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1,
+									"margin-left":-3,
+									"margin-top":20
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#cardCaseHand',
+	         			startAt: 2100,
+	         			endAt: 2170,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#cardCaseBlock',
+	         			startAt: 2100,
+	         			endAt: 2170,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0.5
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#sec05 .desc',
-	         			startAt: 1550,
-	         			endAt: 1600,
+	         			startAt: 2170,
+	         			endAt: 2270,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec05 .desc',
+	         			startAt: 2280,
+	         			endAt: 2350,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -702,14 +1043,13 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#cardCase',
-	         			startAt: 1560,
-	         			endAt: 1650,
+	         			startAt: 2300,
+	         			endAt: 2400,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						left:0,
 									opacity:1
 	         					}
 	         					
@@ -717,7 +1057,50 @@ var scrollAnimate,
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						left:-500,
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#cardCaseBlock',
+	         			startAt: 2320,
+	         			endAt: 2400,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:0.5
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#cardCaseHand',
+	         			startAt: 2320,
+	         			endAt: 2350,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						
+									opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						
 									opacity:0
 	         					}
 	         				}
@@ -725,8 +1108,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec05',
-	         			startAt: 1600,
-	         			endAt: 1650,
+	         			startAt: 2280,
+	         			endAt: 2400,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -739,44 +1122,22 @@ var scrollAnimate,
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						left:-800
+	         						left:-1400
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#sec06',
-	         			startAt: 1580,
-	         			endAt: 1650,
+	         			startAt: 2280,
+	         			endAt: 2400,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
 	         						left:1600
-	         					}
-	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						left:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec06',
-	         			startAt: 1580,
-	         			endAt: 1650,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						left:1600
-	         					}
-	         					
+	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
@@ -788,8 +1149,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseStyle2',
-	         			startAt: 1580,
-	         			endAt: 1650,
+	         			startAt: 2280,
+	         			endAt: 2400,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -809,8 +1170,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseStyle3',
-	         			startAt: 1580,
-	         			endAt: 1650,
+	         			startAt: 2280,
+	         			endAt: 2400,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -829,9 +1190,32 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#sec06 .desc',
+	         			startAt: 2400,
+	         			endAt: 2550,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						
+									opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						
+									opacity:1
+	         					}
+	         				}
+	         			]
+	         		},,
+					{
 	         			selector: '#sec06 .descBlk',
-	         			startAt: 1650,
-	         			endAt: 1750,
+	         			startAt: 2600,
+	         			endAt: 2700,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -851,8 +1235,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec06 .desc',
-	         			startAt: 1650,
-	         			endAt: 1680,
+	         			startAt: 2600,
+	         			endAt: 2630,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -872,8 +1256,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseStyle1',
-	         			startAt: 1680,
-	         			endAt: 1750,
+	         			startAt: 2600,
+	         			endAt: 2670,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -893,8 +1277,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseStyle2',
-	         			startAt: 1680,
-	         			endAt: 1750,
+	         			startAt: 2600,
+	         			endAt: 2670,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -914,8 +1298,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseStyle3',
-	         			startAt: 1680,
-	         			endAt: 1750,
+	         			startAt: 2600,
+	         			endAt: 2670,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -935,8 +1319,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#buildingNight',
-	         			startAt: 1650,
-	         			endAt: 1750,
+	         			startAt: 2600,
+	         			endAt: 2700,
 						onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -956,8 +1340,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#colorCase1',
-	         			startAt: 1700,
-	         			endAt: 1750,
+	         			startAt: 2650,
+	         			endAt: 2700,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -977,34 +1361,34 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#buildingNight',
-	         			startAt: 1750,
-	         			endAt: 1850,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_5.png");},
+	         			startAt: 2700,
+	         			endAt: 2750,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_5.png");*/},
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						width:1600,
+	         						//width:1600,
 									top:-200,
-									left:0
+									//left:0
 	         					}
 	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						width:1800,
-									top:-300,
-									left:-100
+	         						//width:1800,
+									top:-250,
+									//left:-100
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#colorCase3',
-	         			startAt: 1750,
-	         			endAt: 1850,
+	         			startAt: 2700,
+	         			endAt: 2800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1033,8 +1417,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#colorCase4',
-	         			startAt: 1750,
-	         			endAt: 1850,
+	         			startAt: 2700,
+	         			endAt: 2800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1063,8 +1447,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec07 .desc',
-	         			startAt: 1750,
-	         			endAt: 1850,
+	         			startAt: 2700,
+	         			endAt: 2800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1081,82 +1465,109 @@ var scrollAnimate,
 	         				}
 	         			]
 	         		},
-					/*{
+					{
 	         			selector: '#colorCase1',
-	         			startAt: 1800,
-	         			endAt: 1850,
+	         			startAt: 2790,
+	         			endAt: 2850,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						opacity:1
+									opacity:1
 	         					}	         					
+	         				},
+	         				{
+	         					position: .1,
+	         					properties: {
+									opacity:0
+	         					}
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						opacity:0
+									opacity:0
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#colorCase2',
-	         			startAt: 1800,
-	         			endAt: 1850,
-	         			onEndAnimate:function( anim ) {},
+	         			startAt: 2600,
+	         			endAt: 2790,
+						onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
-	         					properties: {
-	         						opacity:0
+	         					properties:{
+									opacity:0
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						opacity:1
+									opacity:0
 	         					}
 	         				}
 	         			]
-	         		}*/				
+	         		},
+					{
+	         			selector: '#colorCase2',
+	         			startAt: 2790,
+	         			endAt: 2900,
+						onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties:{
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec08',
+	         			startAt: 2850,
+	         			endAt: 3050,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						left:1600
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0
+	         					}
+	         				}
+	         			]
+	         		},				
 					{
 	         			selector: '#sec07 .desc',
-	         			startAt: 1850,
-	         			endAt: 1900,
+	         			startAt: 2870,
+	         			endAt: 2920,
+						onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						left:750,
+	         						left:667,
 									opacity:1
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						left:300,
-									opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#colorCase1',
-	         			startAt: 1850,
-	         			endAt: 1900,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:1
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
+	         						left:417,
 									opacity:0
 	         					}
 	         				}
@@ -1164,27 +1575,9 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#colorCase2',
-	         			startAt: 1850,
-	         			endAt: 1900,
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:1
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#colorCase2',
-	         			startAt: 1900,
-	         			endAt: 1930,
+	         			startAt: 2900,
+	         			endAt: 3050,
+						onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
@@ -1202,8 +1595,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec07',
-	         			startAt: 1870,
-	         			endAt: 1950,
+	         			startAt: 2920,
+	         			endAt: 3070,
 						onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1211,13 +1604,6 @@ var scrollAnimate,
 	         					properties: {
 	         						left:0
 	         					}	         					
-	         				},
-	         				{
-	         					position: .8,
-	         					properties: {
-	         						left:-200,
-									
-	         					}
 	         				},
 							{
 	         					position: 1,
@@ -1229,30 +1615,10 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
-	         			selector: '#sec08',
-	         			startAt: 1850,
-	         			endAt: 1950,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						left:1600
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						left:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
 	         			selector: '#sec08 .desc',
-	         			startAt: 1950,
-	         			endAt: 2050,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_1.png");},
+	         			startAt: 3080,
+	         			endAt: 3180,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_1.png");*/},
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1271,8 +1637,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseFrameBlack',
-	         			startAt: 1950,
-	         			endAt: 2100,
+	         			startAt: 2950,
+	         			endAt: 3100,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1290,9 +1656,145 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#caseFrameBg',
+	         			startAt: 2900,
+	         			endAt: 3150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						width:1600,
+									height:900,
+									left:0,
+									top:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						width:2000,
+									height:1300,
+									left:-200,
+									top:-200
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameLeft',
+	         			startAt: 3050,
+	         			endAt: 3150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									left:14,
+									top:6
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0,
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameRight',
+	         			startAt: 3050,
+	         			endAt: 3150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									left:-24,
+									top:-11
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0,
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameLockRight',
+	         			startAt: 3050,
+	         			endAt: 3150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									left:44,
+									top:21
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0,
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameLockLeft',
+	         			startAt: 3050,
+	         			endAt: 3150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									left:-63,
+									top:-31
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0,
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameBack',
+	         			startAt: 3050,
+	         			endAt: 3150,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									left:-44,
+									top:25
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						left:0,
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#sec09',
-	         			startAt: 2100,
-	         			endAt: 2200,
+	         			startAt: 3150,
+	         			endAt: 3250,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1311,8 +1813,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseConcert',
-	         			startAt: 2150,
-	         			endAt: 2200,
+	         			startAt: 3170,
+	         			endAt: 3250,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1331,21 +1833,105 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec08 .desc',
-	         			startAt: 2150,
-	         			endAt: 2200,
+	         			startAt: 3180,
+	         			endAt: 3230,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						top:300,
+	         						top:171,
 									opacity:1
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						top:-300,
+	         						top:-171,
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '.caseFrame',
+	         			startAt: 3200-50,
+	         			endAt: 3250-50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top:0,
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:-200,
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '.caseFrame',
+	         			startAt: 3200-50,
+	         			endAt: 3250,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameLeft,#caseFrameRight',
+	         			startAt: 3210-30,
+	         			endAt: 3260-30,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top:0,
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:-200,
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseFrameBack,#caseFrameLockLeft,#caseFrameLockRight',
+	         			startAt: 3220-20,
+	         			endAt: 3270-20,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						top:0,
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						top:-200,
 									opacity:0
 	         					}
 	         				}
@@ -1353,8 +1939,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseFrame',
-	         			startAt: 2160,
-	         			endAt: 2200,
+	         			startAt: 3170,
+	         			endAt: 3260,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1366,56 +1952,75 @@ var scrollAnimate,
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						top:-300
+	         						top:-800
 	         					}
 	         				}
 	         			]
 	         		},
 					{
-	         			selector: '#sec09 .desc',
-	         			startAt: 2200,
-	         			endAt: 2350,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_7.png");},
+	         			selector: '#caseFrame',
+	         			startAt: 3160,
+	         			endAt: 3300,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						opacity:0
+									opacity:1
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#caseBubble01,#caseBubble02',
-	         			startAt: 2200,
-	         			endAt: 2250,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-	         						opacity:0
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-	         						opacity:1
+									opacity:0
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#caseBubble01',
-	         			startAt: 2250,
-	         			endAt: 2350,
+	         			startAt: 3260,
+	         			endAt: 3310,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:.5
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseBubble02',
+	         			startAt: 3260,
+	         			endAt: 3310,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:.8
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseBubble01',
+	         			startAt: 3300,
+	         			endAt: 3450,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1436,8 +2041,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseBubble02',
-	         			startAt: 2250,
-	         			endAt: 2350,
+	         			startAt: 3300,
+	         			endAt: 3450,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1455,9 +2060,156 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#caseConcertHand',
+	         			startAt: 3300,
+	         			endAt: 3370,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseConcertBlock',
+	         			startAt: 3300,
+	         			endAt: 3370,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0.6
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec09 .desc',
+	         			startAt: 3370,
+	         			endAt: 3470,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_7.png");*/},
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseBubble01',
+	         			startAt: 3550,
+	         			endAt: 3700,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						width:1800,
+									left:-200
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						width:1600,
+									left:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseBubble02',
+	         			startAt: 3550,
+	         			endAt: 3700,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						width:1800
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						width:1600
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseConcertHand',
+	         			startAt: 3550,
+	         			endAt: 3700,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:1
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseConcertBlock',
+	         			startAt: 3550,
+	         			endAt: 3700,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+	         						opacity:0.6
+	         					}
+	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+	         						opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#sec10',
-	         			startAt: 2350,
-	         			endAt: 2450,
+	         			startAt: 3700,
+	         			endAt: 3800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1474,23 +2226,24 @@ var scrollAnimate,
 	         				}
 	         			]
 	         		},
+					
 					{
 	         			selector: '#sec09 .desc',
-	         			startAt: 2370,
-	         			endAt: 2430,
+	         			startAt: 3720,
+	         			endAt: 3780,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-	         						top:240,
+	         						top:136,
 									opacity:1
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-	         						top:0,
+	         						top:-104,
 									opacity:0
 	         					}
 	         				}
@@ -1498,8 +2251,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseConcert',
-	         			startAt: 2400,
-	         			endAt: 2450,
+	         			startAt: 3730,
+	         			endAt: 3800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1520,9 +2273,9 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGameHand',
-	         			startAt: 2450,
-	         			endAt: 2600,
-						onStartAnimate:function( anim ) {$("#logo img").attr("src","images/startLogo_3.png");},
+	         			startAt: 3800,
+	         			endAt: 3950,
+						onStartAnimate:function( anim ) {/*$("#logo img").attr("src","images/startLogo_3.png");*/},
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1530,12 +2283,6 @@ var scrollAnimate,
 	         					properties: {
 									opacity:0
 	         					}	         					
-	         				},
-	         				{
-	         					position: .5,
-	         					properties: {
-									opacity:1
-	         					}
 	         				},
 	         				{
 	         					position: 1,
@@ -1547,8 +2294,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec10 .desc',
-	         			startAt: 2450,
-	         			endAt: 2600,
+	         			startAt: 2450+1400,
+	         			endAt: 2600+1400,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1567,8 +2314,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGameBlack',
-	         			startAt: 2450,
-	         			endAt: 2600,
+	         			startAt: 2450+1350,
+	         			endAt: 2600+1350,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1578,10 +2325,24 @@ var scrollAnimate,
 	         					}	         					
 	         				},
 	         				{
-	         					position: .5,
+	         					position: 1,
 	         					properties: {
-									opacity:1
+									opacity:.8
 	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameBlack',
+	         			startAt: 2600+1500,
+	         			endAt: 2650+1500+200,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:.8
+	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
@@ -1592,9 +2353,29 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#caseGameHand',
+	         			startAt: 2600+1500,
+	         			endAt: 2650+1500+200,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:.5/*圖片本身透明*/
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#caseGameScore,#caseGameLife',
-	         			startAt: 2450,
-	         			endAt: 2550,
+	         			startAt: 2450+1350+200,
+	         			endAt: 2550+1350+200,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1613,8 +2394,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGamePlayer',
-	         			startAt: 2500,
-	         			endAt: 2650,
+	         			startAt: 2500+1350+450,
+	         			endAt: 2650+1350+450,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1657,8 +2438,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGamePlayer',
-	         			startAt: 2600,
-	         			endAt: 2700,
+	         			startAt: 4530,
+	         			endAt: 4600,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1677,28 +2458,28 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec10 .desc',
-	         			startAt: 2600,
-	         			endAt: 2750,
+	         			startAt: 2600+1350+450,
+	         			endAt: 2750+1350+450,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-									top:180
+									opacity:1
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-									top:280
+									opacity:0
 	         					}
 	         				}
 	         			]
-	         		},
+	         		}/*,
 					{
 	         			selector: '#caseGameEnermy01',
-	         			startAt: 2600,
-	         			endAt: 2750,
+	         			startAt: 2600+1350,
+	         			endAt: 2750+1350,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1717,8 +2498,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGameEnermy02',
-	         			startAt: 2600,
-	         			endAt: 2750,
+	         			startAt: 2600+1350,
+	         			endAt: 2750+1350,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1737,8 +2518,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGameDie',
-	         			startAt: 2550,
-	         			endAt: 2750,
+	         			startAt: 2550+1350,
+	         			endAt: 2750+1350,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1754,24 +2535,405 @@ var scrollAnimate,
 	         					}
 	         				}
 	         			]
-	         		},					
+	         		}*/
+					,
 					{
-	         			selector: '#caseGameMissile',
-	         			startAt: 2700,
-	         			endAt: 2750,
+	         			selector: '#caseGameDie',
+	         			startAt: 3850+450+50,
+	         			endAt: 3900+450+50,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-									top:610,
+									top:-100
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-100
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameDie',
+	         			startAt: 3900+450+50,
+	         			endAt: 3950+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameDie',
+	         			startAt: 3950+450+50,
+	         			endAt: 4000+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:100
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:100
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameDie',
+	         			startAt: 4000+450+50,
+	         			endAt: 4050+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:200
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:200
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameDie',
+	         			startAt: 4100+450+50,
+	         			endAt: 4150+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:300
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:300
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameDie',
+	         			startAt: 4150+450+50,
+	         			endAt: 4200+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:350
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:350
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 3925+450+50,
+	         			endAt: 3975+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:-250
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-250
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 3975+450+50,
+	         			endAt: 4025+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:-150
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-150
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 4025+450+50,
+	         			endAt: 4075+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:-50
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-50
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 4100+450+50,
+	         			endAt: 4125+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:50
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:50
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 4125+450+50,
+	         			endAt: 4150+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:150
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:150
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 4150+450+50,
+	         			endAt: 4175+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:250
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:250
+	         					}
+	         				}
+	         			]
+	         		},					
+					{
+	         			selector: '#caseGameEnermy01',
+	         			startAt: 4175+450+50,
+	         			endAt: 4200+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:350
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:350
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameEnermy02',
+	         			startAt: 3900+450+50,
+	         			endAt: 3950+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:-450
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-450
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameEnermy02',
+	         			startAt: 3950+450+50,
+	         			endAt: 4000+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:-300
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-300
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameEnermy02',
+	         			startAt: 4000+450+50,
+	         			endAt: 4050+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:-150
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:-150
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameEnermy02',
+	         			startAt: 4050+450+50,
+	         			endAt: 4100+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameEnermy02',
+	         			startAt: 4125+450+50,
+	         			endAt: 4175+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:150
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:150
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameEnermy02',
+	         			startAt: 4175+450+50,
+	         			endAt: 4200+450+50,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:300
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									top:300
+	         					}
+	         				}
+	         			]
+	         		},				
+					{
+	         			selector: '#caseGameMissile',
+	         			startAt: 4600,
+	         			endAt: 4650,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									top:495,
 									opacity:0
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-									top:350,
+									top:370,
 									opacity:10
 	         					}
 	         				}
@@ -1779,8 +2941,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseGameDie,#caseGameMissile',
-	         			startAt: 2750,
-	         			endAt: 2760,
+	         			startAt: 4650,
+	         			endAt: 4700,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1799,8 +2961,8 @@ var scrollAnimate,
 	         		},					
 					{
 	         			selector: '#caseGameBoom',
-	         			startAt: 2750,
-	         			endAt: 2800,
+	         			startAt: 4680,
+	         			endAt: 4750,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1836,90 +2998,9 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
-	         			selector: '#caseGameEnermy01',
-	         			startAt: 2750,
-	         			endAt: 2800,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									top:50,opacity:1
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									top:150,opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#caseGameEnermy02',
-	         			startAt: 2750,
-	         			endAt: 2800,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									top:200,opacity:1
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									top:350,opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#caseGameHand',
-	         			startAt: 2750,
-	         			endAt: 2850,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:.5
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#caseGamePlayer',
-	         			startAt: 2780,
-	         			endAt: 2850,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:1,
-									left:387
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									left:950,opacity:0
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#caseGameScore,#caseGameLife',
-	         			startAt: 2800,
-	         			endAt: 2850,
+	         			selector: '#caseGameEnermy01,#caseGameEnermy02',
+	         			startAt: 4650,
+	         			endAt: 4800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1937,49 +3018,51 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
-	         			selector: '#sec10 .desc',
-	         			startAt: 2850,
-	         			endAt: 2950,
+	         			selector: '#caseGamePlayer',
+	         			startAt: 4800,
+	         			endAt: 4950,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-									top:280
+									opacity:1,
+									left:387
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-									top:-100
+									opacity:0,
+									left:930
 	         					}
 	         				}
 	         			]
 	         		},
 					{
-	         			selector: '#caseGame',
-	         			startAt: 2860,
-	         			endAt: 2950,
+	         			selector: '#caseGameScore,#caseGameLife',
+	         			startAt: 4800,
+	         			endAt: 4950,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-									bottom:0
+									opacity:1
 	         					}	         					
 	         				},
 	         				{
 	         					position: 1,
 	         					properties: {
-									bottom:450
+									opacity:0
 	         					}
 	         				}
 	         			]
 	         		},
 					{
 	         			selector: '#sec11',
-	         			startAt: 2850,
-	         			endAt: 2950,
+	         			startAt: 4950,
+	         			endAt: 5200,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -1997,9 +3080,89 @@ var scrollAnimate,
 	         			]
 	         		},
 					{
+	         			selector: '#caseGame',
+	         			startAt: 4980,
+	         			endAt: 5300,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									bottom:0
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									bottom:900
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameHand',
+	         			startAt: 4980,
+	         			endAt: 5300,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									"margin-top":250
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									"margin-top":-650
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGameHand',
+	         			startAt: 4980,
+	         			endAt: 5100,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#caseGame',
+	         			startAt: 4980,
+	         			endAt: 5200,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:1
+	         					}	         					
+	         				},
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:0
+	         					}
+	         				}
+	         			]
+	         		},
+					{
 	         			selector: '#caseLimitBlack',
-	         			startAt: 2950,
-	         			endAt: 3000,
+	         			startAt: 5200,
+	         			endAt: 5300,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -2018,8 +3181,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseLimitLabel',
-	         			startAt: 3000,
-	         			endAt: 3050,
+	         			startAt: 5300,
+	         			endAt: 5500,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -2038,28 +3201,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#sec11 .descBlk',
-	         			startAt: 3050,
-	         			endAt: 3100,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:0
-	         					}	         					
-	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec11 .descBlk p.highlight',
-	         			startAt: 3050,
-	         			endAt: 3200,
+	         			startAt: 5500,
+	         			endAt: 5700,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -2078,8 +3221,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseLimit02',
-	         			startAt: 3200,
-	         			endAt: 3300,
+	         			startAt: 5700,
+	         			endAt: 5800,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -2088,32 +3231,6 @@ var scrollAnimate,
 									opacity:0
 	         					}	         					
 	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec11 .descBlk p.highlight',
-	         			startAt: 3200,
-	         			endAt: 3300,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:1
-	         					}	         					
-	         				},							
-	         				{
-	         					position: .5,
-	         					properties: {
-									opacity:0
-	         					}
-	         				},							
 	         				{
 	         					position: 1,
 	         					properties: {
@@ -2124,8 +3241,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseLimit03',
-	         			startAt: 3300,
-	         			endAt: 3400,
+	         			startAt: 5800,
+	         			endAt: 5900,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -2134,32 +3251,6 @@ var scrollAnimate,
 									opacity:0
 	         					}	         					
 	         				},
-	         				{
-	         					position: 1,
-	         					properties: {
-									opacity:1
-	         					}
-	         				}
-	         			]
-	         		},
-					{
-	         			selector: '#sec11 .descBlk p.highlight',
-	         			startAt: 3300,
-	         			endAt: 3400,
-	         			onEndAnimate:function( anim ) {},
-	         			keyframes: [
-	         				{ 
-	         					position: 0,
-	         					properties: {
-									opacity:1
-	         					}	         					
-	         				},							
-	         				{
-	         					position: .5,
-	         					properties: {
-									opacity:0
-	         					}
-	         				},							
 	         				{
 	         					position: 1,
 	         					properties: {
@@ -2170,8 +3261,8 @@ var scrollAnimate,
 	         		},
 					{
 	         			selector: '#caseLimit04',
-	         			startAt: 3400,
-	         			endAt: 3500,
+	         			startAt: 5900,
+	         			endAt: 6000,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
@@ -2187,34 +3278,124 @@ var scrollAnimate,
 	         					}
 	         				}
 	         			]
-	         		},
+	         		}/*,
 					{
 	         			selector: '#sec11 .descBlk p.highlight',
-	         			startAt: 3400,
-	         			endAt: 3500,
+	         			startAt: 6000,
+	         			endAt: 6250,
 	         			onEndAnimate:function( anim ) {},
 	         			keyframes: [
 	         				{ 
 	         					position: 0,
 	         					properties: {
-									opacity:1
+									opacity:.4
 	         					}	         					
 	         				},							
 	         				{
-	         					position: .5,
+	         					position: .2,
 	         					properties: {
-									opacity:0
+									opacity:.8
+	         					}
+	         				},							
+	         				{
+	         					position: .4,
+	         					properties: {
+									opacity:.4
+	         					}
+	         				},							
+	         				{
+	         					position: .6,
+	         					properties: {
+									opacity:.8
+	         					}
+	         				},							
+	         				{
+	         					position: .8,
+	         					properties: {
+									opacity:.4
 	         					}
 	         				},							
 	         				{
 	         					position: 1,
 	         					properties: {
-									opacity:1
+									opacity:.8
 	         					}
 	         				}
 	         			]
-	         		}									         		
+	         		},
+					{
+	         			selector: '#sec11 .descBlk p.highlight',
+	         			startAt: 6250,
+	         			endAt: 6500,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:.8
+	         					}	         					
+	         				},							
+	         				{
+	         					position: .2,
+	         					properties: {
+									opacity:.4
+	         					}
+	         				},							
+	         				{
+	         					position: .4,
+	         					properties: {
+									opacity:.8
+	         					}
+	         				},							
+	         				{
+	         					position: .6,
+	         					properties: {
+									opacity:.4
+	         					}
+	         				},							
+	         				{
+	         					position: .8,
+	         					properties: {
+									opacity:.8
+	         					}
+	         				},							
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:.4
+	         					}
+	         				}
+	         			]
+	         		},
+					{
+	         			selector: '#sec11 .descBlk p.highlight',
+	         			startAt: 6500,
+	         			endAt: 6750,
+	         			onEndAnimate:function( anim ) {},
+	         			keyframes: [
+	         				{ 
+	         					position: 0,
+	         					properties: {
+									opacity:.4
+	         					}	         					
+	         				},							
+	         				{
+	         					position: 1,
+	         					properties: {
+									opacity:.8
+	         					}
+	         				}
+	         			]
+	         		}*/											         		
 					];
+	function doBright(){
+		$("#sec11 .descBlk p.highlight").animate({opacity:.8},300,function(){
+			$("#sec11 .descBlk p.highlight").animate({opacity:.4},300);	
+		});	
+	}	
+	function testAnimate(position){
+		scrollAnimate.scrollTo(position);
+	}	
 	$(function(){
 		var imgCaseStepStr="";
 		for(var i=1;i<=78;i++){
@@ -2224,15 +3405,38 @@ var scrollAnimate,
 		scrollAnimate = ScrollAnimator();
 		scrollAnimate.init({
 			animation: animation,
-			maxScroll: 3500,
+			maxScroll: 6001,
 			useRAF : false,
-			tickSpeed: 50,	
+			tickSpeed: 100,	
 			scrollSpeed: 15,
 			debug:    false,
 			tweenSpeed: .2,
 			startAt: 0,	
 			container: $('#main')
+			
 		})	;
+		//debug/////////////////////////////////////////////////////////////////////
+		//scrollAnimate.scrollTo(3060);
+		
+		$("#btnStart").click(function(){scrollAnimate.autoScrollStart();});
+		$("#btnStop").click(function(){scrollAnimate.autoScrollStop();});
+		$("#compare a").click(function(){
+			var _self = $(this);
+			var _idx = 	$("#compare a").index(_self);
+			if(_self.hasClass("act")){
+				_self.removeClass("act");
+				$("#ori img:visible").hide();
+				return;
+			}
+			$(".act").removeClass("act");
+			_self.addClass("act");
+			$("#ori img:visible").hide();
+			$("#ori img").eq(_idx).show();
+			
+		});
+		
+		
+		//debug/////////////////////////////////////////////////////////////////////
 		$win = $(window);
 		onResize();
 		$win.bind("resize",onResize);
@@ -2270,6 +3474,8 @@ var scrollAnimate,
 			}
 		}
 
+
+		
 		function enterSection(index) {
 			if (currentSection==index) {
 				return;
